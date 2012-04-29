@@ -41,7 +41,7 @@ It should be noted that email-typo-js only checks the [Top Level Domain](http://
 
 // Validate first
 email = "email@email.con";
-if (email.match(regExp) !== null && email.emailTypoAlternation() === null) {
+if (email.match(regExp) !== null && email.emailTypoAlternatives() === null) {
   // We possibly have a valid email
 }
 ```
@@ -56,3 +56,5 @@ Please fork and submit pull requests, or submit issues via github!
 - JSMin the code
 - Actually, create a script to do the min and create a release
 - create a release directory and add a release!
+- allow api to extend known typo list, either at check or before
+  - `"email@email.examplr".emailTypoAlternatives({'examplr': ['example']})`
