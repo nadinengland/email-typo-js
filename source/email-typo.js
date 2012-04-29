@@ -6,6 +6,7 @@
   suggestions = {
     'con' : ['com'],
     'couk' : ['co.uk'],
+    'ik' : ['uk'],
     'uj' : ['uk']
   };
 
