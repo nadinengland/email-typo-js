@@ -15,10 +15,10 @@
 
     if (tld.match(typosPattern) !== null) {
       // a typo may have occured
-
       return "." + suggestions[tld];
     }
 
+    // Not a typo that we're aware of
     return null;
   };
 }());
