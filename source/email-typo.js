@@ -5,7 +5,8 @@
 
   suggestions = {
     'con' : ['com'],
-    'couk' : ['co.uk']
+    'couk' : ['co.uk'],
+    'uj' : ['uk']
   };
 
   typosPattern = new RegExp("(" + Object.keys(suggestions).join('|') + ")");
