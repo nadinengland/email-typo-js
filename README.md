@@ -4,7 +4,7 @@ Inspired from a [tweet](http://twitter.com/#!/jakemarsh/status/19605633144102912
 
 ## Usage
 
-There are a two ways to use email-typo-js, the easiest way is to load the `release/email-typo.js` into your JS environment, allowing the new prototype method `emailTypoAlternatives` to be added to the `String` object. NOTE: `String#emailTypoAlternatives` is only added if it isn't already defined, ie `=== undefined`;
+Using email-typo-js is as simple as loading `release/email-typo.js` into your JS environment, which will add the new prototype method `String#emailTypoAlternatives`. NOTE: `String#emailTypoAlternatives` is only added if it isn't already defined, ie `=== undefined`;
 
 ### Simple
 
@@ -30,15 +30,12 @@ document.getElementById('email').onchange = function () {
 };
 ```
 
-### Non-native function
+### Email Validation
 
-If you are against altering the native objects (take a look at [Sugar](http://sugarjs.com) to see when it can work fantasticly), you can copy the `release/email-typo.function.js` text into your project and use it as a local function. Just don't forget the license!
+It should be noted that email-typo-js only checks the [Top Level Domain](http://en.wikipedia.org/wiki/List_of_Internet_top-level_domains), if the string doesn't end with `.x` things will go wrong. It is recommended that you validate the email prior to checking for TLD typos.
 
-### Function
 ```javascript
-var emailTypoAlternatives = (function (email) {
-  // ...
-}());
-
-var alternatives = emailTypoAlternatives("email@email.con");
+"email".emailTypoAlternatives();        // => null
+"email.con".emailTypoAlternatives();    // => ['.con']
+"@email.co.uj".emailTypoAlternatives(); // => ['.uk']
 ```
