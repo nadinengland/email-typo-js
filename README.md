@@ -39,3 +39,10 @@ It should be noted that email-typo-js only checks the [Top Level Domain](http://
 "email.con".emailTypoAlternatives();    // => ['.con']
 "@email.co.uj".emailTypoAlternatives(); // => ['.uk']
 ```
+
+## To Do
+
+- Make NodeJS package
+- JSMin the code
+- Actually, create a script to do the min and create a release
+- create a release directory and add a release!
