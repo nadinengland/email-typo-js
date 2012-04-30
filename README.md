@@ -36,7 +36,7 @@ It should be noted that email-typo-js only checks the [Top Level Domain](http://
 
 ```javascript
 "email".emailTypoAlternatives();        // => null
-"email.con".emailTypoAlternatives();    // => ['.con']
+"email.con".emailTypoAlternatives();    // => ['.com']
 "@email.co.uj".emailTypoAlternatives(); // => ['.uk']
 
 // Validate first
