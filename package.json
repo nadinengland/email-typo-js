@@ -1,0 +1,35 @@
+{
+  "name": "email-typo",
+  "version": "0.1.0",
+  "author": "Thomas Nadin <nadinengland@gmail.com>",
+  "description": "a simple JS library for handling common email typos",
+  "contributors": [ 
+    {
+      "name": "Thomas Nadin",
+      "email": "nadinengland@gmail.com"
+    } 
+  ],
+  "scripts": {
+    "test": "mocha --spec"
+  },
+  "main": "./release/email-typo-js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nadinengland/email-typo-js.git"
+  },
+  "keywords": [
+    "email",
+    "typo",
+    "typos"
+  ],
+  "devDependencies": {
+    "should" : "0.6.x",
+    "mocha"  : "1.0.x"
+  },
+  "bundleDependencies": [
+  ],
+  "license": "MIT",
+  "engine": {
+    "node": ">=0.4"
+  }
+}
