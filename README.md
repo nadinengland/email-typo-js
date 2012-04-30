@@ -46,6 +46,21 @@ if (email.match(regExp) !== null && email.emailTypoAlternatives() === null) {
 }
 ```
 
+### Extending Known Typo List
+
+It is more than likely that you may need to cater for a typo that email-typo-js doesn't know about. Pass a object with typo's as keys to extend the known list for that call. Each key should have an array of alternatives.
+
+```javascript
+"email@email.examplr".emailTypoAlternatives({
+  'examplr' : [
+    'example',
+    'exemple',
+    'esempio'
+  ]
+});   // => ['.example', '.exemple', '.esempio']
+```
+
+
 ## Contributions
 
 Please fork and submit pull requests, or submit issues via github!
@@ -56,5 +71,3 @@ Please fork and submit pull requests, or submit issues via github!
 - JSMin the code
 - Actually, create a script to do the min and create a release
 - create a release directory and add a release!
-- allow api to extend known typo list, either at check or before
-  - `"email@email.examplr".emailTypoAlternatives({'examplr': ['example']})`
