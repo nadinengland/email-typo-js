@@ -19,7 +19,7 @@ var alternatives = "email@email.con".emailTypoAlternatives(); // => ['.com']
 <input id='email' type='email' value='email@email.con' />
 ```
 ```javascript
-document.getElementById('email').onchange = function () {
+document.getElementById('email').onkeypress = function () {
   var email = this.value
     , alternatives = this.value.emailTypoAlternatives();
 
