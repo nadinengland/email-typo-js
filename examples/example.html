@@ -31,8 +31,7 @@
 
       function getAlternatives(email) {
         return (isEmail(email))
-          ? email.emailTypoAlternatives({ 'examplr' : ['example', 'exemple', 'esempio'],
-                                          'com' : ['com'] })
+          ? email.emailTypoAlternatives({ 'examplr' : ['example', 'exemple', 'esempio'] })
           : null;
       }
 
