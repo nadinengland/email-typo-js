@@ -1,0 +1,65 @@
+<!doctype html>
+<head>
+  <meta charset="utf-8">
+  <title>email-typo-js browser example</title>
+  <style type="text/css">
+    * { font-family: Arial; }
+    #email { font-size: 15px; width: 200px; }
+    #didYouMean { display: none; }
+  </style>
+</head>
+<body>
+  <h1>email-typo-js browser example</h1>
+  <div role="main">
+    <div>Email: <input id="email" type="email" /> <span id="didYouMean">&nbsp;</span></div>
+    <div>Try *@*.con, *@*.couk, *@*.co.ik or *@*.examplr</div>
+
+  </div>
+
+
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  <script src="../source/email-typo.js"></script>
+
+  <script>
+    (function addDidYouMean(input) {
+      var typingTimeout, didYouMeanTimeout;
+
+      function isEmail(email) {
+        var regex = /^([a-zA-Z0-9_\.\-\+])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+        return regex.test(email);
+      }
+
+      function getAlternatives(email) {
+        return (isEmail(email))
+          ? email.emailTypoAlternatives({ 'examplr' : ['example', 'exemple', 'esempio'],
+                                          'com' : ['com'] })
+          : null;
+      }
+
+      function showDidYouMean(alternatives) {
+        var didYouMean = $("#didYouMean");
+
+        didYouMean.html("Did you mean " + alternatives + "?");
+        didYouMean.fadeIn("slow");
+
+        window.clearTimeout(didYouMeanTimeout);
+        didYouMeanTimeout = window.setTimeout(function () {
+          didYouMean.fadeOut("slow");
+        }, 3000);
+      }
+
+      $(input).keypress(function (event) {
+        window.clearTimeout(typingTimeout);
+        typingTimeout = window.setTimeout(function () {
+          var alternatives = getAlternatives(event.target.value);
+
+          if (alternatives === null || alternatives.length === 0) return;
+
+          showDidYouMean(alternatives.map(function (x) { return "<b>" + x + "</b>"; }).join(", "));
+
+        }, 600);
+      });
+    })('#email');
+  </script>
+</body>
+</html>
