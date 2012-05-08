@@ -31,7 +31,7 @@
 
       function getAlternatives(email) {
         return (isEmail(email))
-          ? email.emailTypoAlternatives({ 'examplr' : ['example', 'exemple', 'esempio'] })
+          ? EmailTypo.alternatives(email, { 'examplr' : ['example', 'exemple', 'esempio'] })
           : null;
       }
 
@@ -55,7 +55,6 @@
           if (alternatives === null || alternatives.length === 0) return;
 
           showDidYouMean(alternatives.map(function (x) { return "<b>" + x + "</b>"; }).join(", "));
-
         }, 600);
       });
     })('#email');

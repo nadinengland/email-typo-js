@@ -1,5 +1,7 @@
-(function () {
-  var defaultTypoCollection, defaultTypoPattern;
+(function (w) {
+  var defaultTypoCollection
+    , defaultTypoPattern
+    , EmailTypo;
 
   if (String.prototype.emailTypoAlternatives !== undefined) return;
 
@@ -30,25 +32,35 @@
 
   defaultTypoPattern = createTypoPattern(defaultTypoCollection);
 
-  String.prototype.emailTypoAlternatives = function (extensions) {
-    var tld = this.slice(this.lastIndexOf('.') + 1)
-      , typoCollection = defaultTypoCollection
-      , typoPattern = defaultTypoPattern;
+  EmailTypo = {
+    alternatives: function (email, extensions) {
+      var tld = email.slice(email.lastIndexOf('.') + 1)
+        , typoCollection = defaultTypoCollection
+        , typoPattern = defaultTypoPattern;
 
-    if (extensions !== undefined) {
-      // Merge the collections, with the extensions overriding the defaults
-      typoCollection = mergedObject(defaultTypoCollection, extensions);
-      typoPattern = createTypoPattern(typoCollection);
-    }
-    
-    if (tld.match(typoPattern) !== null) {
-      // a typo may have occured
-      return typoCollection[tld].map(function (x) {
-        return "." + x;
-      });
-    }
+      if (extensions !== undefined) {
+        // Merge the collections, with the extensions overriding the defaults
+        typoCollection = mergedObject(defaultTypoCollection, extensions);
+        typoPattern = createTypoPattern(typoCollection);
+      }
+      
+      if (tld.match(typoPattern) !== null) {
+        // a typo may have occured
+        return typoCollection[tld].map(function (x) {
+          return "." + x;
+        });
+      }
 
-    // Not a typo that we're aware of
-    return null;
+      // Not a typo that we're aware of
+      return null;
+    }
   };
-}());
+
+  if (typeof module !== 'undefined' && module.exports) {
+    // Node enviroment
+    module.exports = EmailTypo;
+  } else {
+    // Browser Enviroment
+    w['EmailTypo'] = EmailTypo
+  }
+}(this));
