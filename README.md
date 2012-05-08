@@ -1,6 +1,7 @@
 # email-typo-js
 
 Inspired by a [tweet](http://twitter.com/#!/jakemarsh/status/196056331441029120) from [@jakemarsh](http://twitter.com/#!/jakemarsh), email-typo-js will give you a list of alternatives if it believes that the email's [Top Level Domain](http://en.wikipedia.org/wiki/List_of_Internet_top-level_domains) isn't valid. The most common use case for this is the classic `@whatever.con`, clearly this should be `@whatever.com` (take note of the 'm' instead of 'n').
+Inspired by a [tweet](http://twitter.com/#!/jakemarsh/status/196056331441029120) from [@jakemarsh](http://twitter.com/#!/jakemarsh), email-typo-js will give you a list of alternatives if it believes that the email's [Top Level Domain](http://en.wikipedia.org/wiki/List_of_Internet_top-level_domains) isn't valid. The most common use case for this is the classic `@whatever.con`, clearly this should be `@whatever.com` (take note of the 'm' instead of 'n'). A very simple [live demo](http://thomasnadin.co.uk/email-typo/) is available for your eyes.
 
 ## Usage
 
