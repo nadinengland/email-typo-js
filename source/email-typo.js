@@ -48,9 +48,6 @@
       });
     }
 
-    var temp = 1;
-    temp += 1;
-
     // Not a typo that we're aware of
     return null;
   };
